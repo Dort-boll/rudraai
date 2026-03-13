@@ -87,7 +87,8 @@ const products = [
         "Cognitive fatigue monitoring",
         "Deep-work optimization"
       ],
-      deepDive: "The core engine of VayuMind utilizes a proprietary 'Neural Mirroring' algorithm that synchronizes with the user's alpha waves. By creating a feedback loop of visual and auditory stimuli, it induces a state of 'Hyper-Flow' where productivity increases by up to 300%. The system is entirely self-contained, ensuring that your most private thoughts and cognitive patterns never leave your local hardware."
+      deepDive: "The core engine of VayuMind utilizes a proprietary 'Neural Mirroring' algorithm that synchronizes with the user's alpha waves. By creating a feedback loop of visual and auditory stimuli, it induces a state of 'Hyper-Flow' where productivity increases by up to 300%. The system is entirely self-contained, ensuring that your most private thoughts and cognitive patterns never leave your local hardware.",
+      howItWorks: "VayuMind captures real-time EEG data via wearable sensors, processes it through an on-device neural network to identify cognitive bottlenecks using Fast Fourier Transform (FFT), and generates personalized auditory and visual stimuli to synchronize alpha-wave oscillations for optimized focus."
     }
   },
   {
@@ -118,7 +119,8 @@ const products = [
         "Nuclear energy optimization",
         "Climate change modeling"
       ],
-      deepDive: "Vayu Research AI operates on a 'Hyper-Graph' architecture, connecting disparate scientific fields that human researchers might never cross-reference. It recently predicted a new class of high-temperature superconductors by analyzing 40-year-old metallurgical data alongside modern quantum physics simulations. It is not just a tool; it is a peer-level researcher that works 24/7."
+      deepDive: "Vayu Research AI operates on a 'Hyper-Graph' architecture, connecting disparate scientific fields that human researchers might never cross-reference. It recently predicted a new class of high-temperature superconductors by analyzing 40-year-old metallurgical data alongside modern quantum physics simulations. It is not just a tool; it is a peer-level researcher that works 24/7.",
+      howItWorks: "It utilizes a massive Hyper-Graph database to map semantic relationships between millions of scientific papers. It then employs autonomous agents to test hypotheses in virtual simulations, iteratively refining its findings based on simulated outcomes using graph-based relational learning."
     }
   },
   {
@@ -149,7 +151,8 @@ const products = [
         "Agricultural genetic engineering",
         "Longevity science"
       ],
-      deepDive: "By simulating the entire human proteome in a virtual environment, BioMind AI can test billions of drug interactions in seconds. Its 'Bio-Digital Twin' technology allows researchers to model how a specific genetic therapy will affect a patient's unique biological makeup before a single dose is administered. This is the end of trial-and-error medicine."
+      deepDive: "By simulating the entire human proteome in a virtual environment, BioMind AI can test billions of drug interactions in seconds. Its 'Bio-Digital Twin' technology allows researchers to model how a specific genetic therapy will affect a patient's unique biological makeup before a single dose is administered. This is the end of trial-and-error medicine.",
+      howItWorks: "BioMind AI uses advanced transformer-based deep learning models to predict protein folding structures. It then simulates interactions between these proteins and potential drug molecules in a virtual biological environment using molecular dynamics simulations to identify candidates with the highest therapeutic potential."
     }
   },
   {
@@ -180,7 +183,8 @@ const products = [
         "Radiology image analysis",
         "Health trend prediction"
       ],
-      deepDive: "GenAI Doctor utilizes a 'Multi-Modal Diagnostic' engine that cross-references visual data (scans/photos), textual data (reports), and sensor data (wearables). It can detect early-stage cardiovascular issues up to 18 months before physical symptoms appear. It acts as a 24/7 medical guardian, providing peace of mind through constant, non-invasive monitoring."
+      deepDive: "GenAI Doctor utilizes a 'Multi-Modal Diagnostic' engine that cross-references visual data (scans/photos), textual data (reports), and sensor data (wearables). It can detect early-stage cardiovascular issues up to 18 months before physical symptoms appear. It acts as a 24/7 medical guardian, providing peace of mind through constant, non-invasive monitoring.",
+      howItWorks: "It ingests multi-modal medical data (images, text, sensor streams) and processes it through a specialized medical knowledge graph. It then applies a diagnostic fusion engine to identify anomalies and cross-references them with global medical databases to suggest potential diagnoses."
     }
   },
   {
@@ -211,7 +215,8 @@ const products = [
         "Autonomous QA testing",
         "Cloud infrastructure scaling"
       ],
-      deepDive: "Vayu IDE leverages 'Semantic Logic Synthesis' to understand business requirements in natural language and translate them into optimized, scalable codebases. It automatically manages database migrations, API documentation, and CI/CD pipelines. It's like having a team of 100 senior engineers working in perfect unison, instantly."
+      deepDive: "Vayu IDE leverages 'Semantic Logic Synthesis' to understand business requirements in natural language and translate them into optimized, scalable codebases. It automatically manages database migrations, API documentation, and CI/CD pipelines. It's like having a team of 100 senior engineers working in perfect unison, instantly.",
+      howItWorks: "Vayu IDE utilizes a 'Neural Architecture Synthesis' engine to decompose high-level intent into modular functional blocks. It employs a multi-agent system where specialized agents handle code generation, architectural validation, and automated security auditing, utilizing a recursive feedback loop to ensure self-healing, scalable, and production-ready software systems."
     }
   },
   {
@@ -242,7 +247,8 @@ const products = [
         "Marketing visual design",
         "Architectural visualization"
       ],
-      deepDive: "The 'Artistic Intuition' engine in Creative Studio doesn't just copy styles; it understands composition, lighting, and emotional resonance. It can generate a 60-second cinematic sequence from a single paragraph of text, complete with spatial audio and physics-based lighting. It is the ultimate tool for storytellers who want to see their dreams realized in high definition."
+      deepDive: "The 'Artistic Intuition' engine in Creative Studio doesn't just copy styles; it understands composition, lighting, and emotional resonance. It can generate a 60-second cinematic sequence from a single paragraph of text, complete with spatial audio and physics-based lighting. It is the ultimate tool for storytellers who want to see their dreams realized in high definition.",
+      howItWorks: "Utilizes a latent diffusion model coupled with a proprietary 'Artistic Intuition' engine that maps semantic concepts to high-dimensional visual latent spaces, enabling real-time generation of cinematic sequences, 3D environments, and artistic style transfer with physics-based lighting."
     }
   },
   {
@@ -273,7 +279,8 @@ const products = [
         "Academic data discovery",
         "Private browsing"
       ],
-      deepDive: "Spark AI uses 'Contextual Intent Mapping' to understand exactly what you're looking for, even with vague queries. It bypasses the SEO-optimized 'junk' of the modern web to find the most authoritative and relevant information. Your search history is never stored, and your identity is masked through a decentralized relay network."
+      deepDive: "Spark AI uses 'Contextual Intent Mapping' to understand exactly what you're looking for, even with vague queries. It bypasses the SEO-optimized 'junk' of the modern web to find the most authoritative and relevant information. Your search history is never stored, and your identity is masked through a decentralized relay network.",
+      howItWorks: "Employs a decentralized, agentic search architecture that crawls and indexes the web in real-time, utilizing a multi-layered transformer model to synthesize disparate data points into coherent, fact-checked answers while maintaining user privacy through on-device query obfuscation."
     }
   },
   {
@@ -304,7 +311,8 @@ const products = [
         "Financial fraud prevention",
         "Data breach mitigation"
       ],
-      deepDive: "Vayu IDS operates on a 'Zero-Trust Neural Mesh' that monitors every packet and behavioral pattern across your network. It can identify a zero-day exploit by detecting subtle deviations in system call patterns that no signature-based firewall would ever catch. It doesn't just alert you; it autonomously isolates infected nodes and heals the vulnerability in real-time."
+      deepDive: "Vayu IDS operates on a 'Zero-Trust Neural Mesh' that monitors every packet and behavioral pattern across your network. It can identify a zero-day exploit by detecting subtle deviations in system call patterns that no signature-based firewall would ever catch. It doesn't just alert you; it autonomously isolates infected nodes and heals the vulnerability in real-time.",
+      howItWorks: "Continuously monitors network traffic patterns using a behavioral analysis engine that leverages unsupervised learning to establish a baseline of 'normal' activity, instantly detecting and isolating anomalies that deviate from established patterns."
     }
   },
   {
@@ -335,7 +343,8 @@ const products = [
         "Cyber warfare analysis",
         "Public safety awareness"
       ],
-      deepDive: "The Threat Map is a high-fidelity 'Digital Twin' of the global internet. It aggregates data from millions of sensors, honeypots, and Vayu IDS nodes to provide a comprehensive view of the world's security posture. It is used by governments and enterprises to anticipate large-scale cyber campaigns before they reach their targets."
+      deepDive: "The Threat Map is a high-fidelity 'Digital Twin' of the global internet. It aggregates data from millions of sensors, honeypots, and Vayu IDS nodes to provide a comprehensive view of the world's security posture. It is used by governments and enterprises to anticipate large-scale cyber campaigns before they reach their targets.",
+      howItWorks: "Aggregates global telemetry data from distributed sensors into a real-time, 3D visualization engine, applying predictive threat modeling to forecast potential security breaches and visualize attack vectors across the global infrastructure."
     }
   }
 

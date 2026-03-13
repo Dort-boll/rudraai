@@ -727,7 +727,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 1, type: "spring" }}
-            className="relative aspect-square rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-3xl overflow-hidden group shadow-2xl"
+            className="relative h-96 md:aspect-square rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-3xl overflow-hidden group shadow-2xl"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50" />
             <ModuleVisualizer product={product} />
@@ -761,9 +761,47 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
               <span className="w-8 h-1 bg-white/20 rounded-full" />
               TECHNICAL DEEP DIVE
             </h3>
-            <p className="text-lg md:text-xl text-white/40 leading-relaxed font-light italic">
+            <p className="text-lg md:text-xl text-white/40 leading-relaxed font-light italic mb-12">
               {product.details.deepDive}
             </p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 md:p-8 relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <h4 className="text-sm font-display font-bold text-white mb-6 flex items-center gap-3 uppercase tracking-widest">
+                <Zap size={18} style={{ color: product.color }} />
+                Advanced Operational Flow
+              </h4>
+              <p className="text-base text-white/60 leading-relaxed font-light">
+                {product.details.howItWorks}
+              </p>
+              
+              {/* Animated Flow Indicator */}
+              <div className="mt-8 flex items-center gap-2">
+                {[...Array(5)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="h-1 rounded-full"
+                    style={{ backgroundColor: product.color }}
+                    animate={{ 
+                      opacity: [0.2, 1, 0.2],
+                      width: [4, 24, 4]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      delay: i * 0.2,
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
           
           <motion.div 
