@@ -1,0 +1,8 @@
+/* Cloudflare Pages SPA Redirects */
+/* Redirect all requests to index.html to handle SPA routing */
+/* This ensures that if a user refreshes on a sub-path, the app still loads */
+/* Note: Currently the app is a single page with modals, but this is good practice */
+
+/*
+/ * /index.html 200
+*/
