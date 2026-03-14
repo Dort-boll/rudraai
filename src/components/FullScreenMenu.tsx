@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ArrowRight } from 'lucide-react';
+import InteractiveLogo from './InteractiveLogo';
 
 interface FullScreenMenuProps {
   isOpen: boolean;
@@ -22,10 +23,7 @@ export default function FullScreenMenu({ isOpen, onClose, products }: FullScreen
           <div className="min-h-screen p-6 sm:p-8 md:p-16 max-w-[1600px] mx-auto flex flex-col">
             {/* Header */}
             <div className="flex justify-between items-center mb-10 md:mb-16">
-              <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-tr from-leo-purple to-leo-indigo flex items-center justify-center font-black text-xl md:text-2xl shadow-lg shadow-leo-purple/20">R</div>
-                <span className="font-display font-black tracking-tighter text-2xl md:text-3xl">RUDRA</span>
-              </div>
+              <InteractiveLogo />
               <button 
                 onClick={onClose}
                 className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:rotate-90 transition-all duration-300"

@@ -46,11 +46,11 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
           style={tiltStyle}
         >
           <motion.div 
-            className="relative w-64 h-64"
+            className="relative w-48 h-48 sm:w-64 sm:h-64"
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Brain size={100} className="absolute inset-0 m-auto opacity-20" style={{ color }} />
+            <Brain size={80} className="absolute inset-0 m-auto opacity-20 sm:w-[100px] sm:h-[100px]" style={{ color }} />
             {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
@@ -86,7 +86,7 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
           className="absolute inset-0 flex items-center justify-center"
           style={tiltStyle}
         >
-          <div className="grid grid-cols-3 gap-4 w-full h-full p-12">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 w-full h-full p-6 sm:p-12">
             {[...Array(9)].map((_, i) => (
               <motion.div
                 key={i}
@@ -112,9 +112,9 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
           className="absolute inset-0 flex items-center justify-center"
           style={tiltStyle}
         >
-          <div className="flex gap-8">
+          <div className="flex gap-4 sm:gap-8">
             {[...Array(8)].map((_, i) => (
-              <div key={i} className="flex flex-col gap-6">
+              <div key={i} className="flex flex-col gap-4 sm:gap-6">
                 {[...Array(10)].map((_, j) => (
                   <motion.div
                     key={j}
@@ -141,10 +141,10 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
     case 'GenAI Doctor':
       return (
         <motion.div 
-          className="absolute inset-0 flex flex-col items-center justify-center p-12 gap-8"
+          className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-12 gap-4 sm:gap-8"
           style={tiltStyle}
         >
-          <div className="w-full h-32 relative border-y border-white/5 overflow-hidden">
+          <div className="w-full h-24 sm:h-32 relative border-y border-white/5 overflow-hidden">
             <svg className="w-full h-full" viewBox="0 0 1000 100" preserveAspectRatio="none">
               <motion.path
                 d="M0,50 L200,50 L220,10 L260,90 L300,50 L500,50 L520,0 L560,100 L600,50 L1000,50"
@@ -159,9 +159,9 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
             {/* Illusion Overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)] opacity-50" />
           </div>
-          <div className="grid grid-cols-3 gap-4 w-full">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 w-full">
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="h-24 rounded-2xl bg-white/[0.02] border border-white/5 p-4 flex flex-col justify-between relative overflow-hidden group">
+              <div key={i} className="h-16 sm:h-24 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/5 p-2 sm:p-4 flex flex-col justify-between relative overflow-hidden group">
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
                 />
@@ -181,37 +181,80 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
     case 'Vayu IDE':
       return (
         <motion.div 
-          className="absolute inset-0 p-8 font-mono text-[10px]"
+          className="absolute inset-0 p-4 sm:p-8 font-mono text-[8px] sm:text-[10px] overflow-hidden"
           style={tiltStyle}
         >
-          <div className="w-full h-full rounded-2xl bg-black/40 border border-white/5 p-6 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
-            <div className="space-y-2 opacity-40 group-hover:opacity-60 transition-opacity duration-500">
-              <div className="text-leo-purple">class NeuralCore {'{'}</div>
-              <div className="pl-4">constructor() {'{'}</div>
-              <div className="pl-8 text-leo-indigo">this.intelligence = new AGI();</div>
-              <div className="pl-8 text-leo-indigo">this.autonomy = true;</div>
-              <div className="pl-4">{'}'}</div>
-              <div className="pl-4">async synthesize() {'{'}</div>
-              <div className="pl-8 text-leo-gold">return await this.intelligence.process();</div>
-              <div className="pl-4">{'}'}</div>
-              <div>{'}'}</div>
+          <div className="w-full h-full rounded-2xl bg-black/40 border border-white/5 p-4 sm:p-6 relative overflow-hidden group">
+            {/* Hypnotic Mirror Background */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-20">
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute border border-white/20 rounded-full"
+                  style={{ width: 100 + i * 100, height: 100 + i * 100 }}
+                  animate={{ 
+                    scale: [1, 1.5, 1],
+                    rotate: [0, 180, 360],
+                    opacity: [0.1, 0.3, 0.1]
+                  }}
+                  transition={{ 
+                    duration: 10 + i * 5, 
+                    repeat: Infinity, 
+                    ease: "linear" 
+                  }}
+                />
+              ))}
+            </div>
+
+            <div className="relative z-10 grid grid-cols-2 gap-4 h-full">
+              {/* Left Side: Code */}
+              <div className="space-y-2 opacity-40 group-hover:opacity-60 transition-opacity duration-500">
+                <div className="text-leo-purple">class NeuralCore {'{'}</div>
+                <div className="pl-4">constructor() {'{'}</div>
+                <div className="pl-8 text-leo-indigo">this.intelligence = new AGI();</div>
+                <div className="pl-8 text-leo-indigo">this.autonomy = true;</div>
+                <div className="pl-4">{'}'}</div>
+                <div className="pl-4">async synthesize() {'{'}</div>
+                <div className="pl-8 text-leo-gold">return await this.intelligence.process();</div>
+                <div className="pl-4">{'}'}</div>
+                <div>{'}'}</div>
+              </div>
+
+              {/* Right Side: Mirrored Code (Visual Effect) */}
+              <div className="space-y-2 opacity-10 group-hover:opacity-20 transition-opacity duration-500 scale-x-[-1] blur-[1px]">
+                <div className="text-leo-purple">class NeuralCore {'{'}</div>
+                <div className="pl-4">constructor() {'{'}</div>
+                <div className="pl-8 text-leo-indigo">this.intelligence = new AGI();</div>
+                <div className="pl-8 text-leo-indigo">this.autonomy = true;</div>
+                <div className="pl-4">{'}'}</div>
+                <div className="pl-4">async synthesize() {'{'}</div>
+                <div className="pl-8 text-leo-gold">return await this.intelligence.process();</div>
+                <div className="pl-4">{'}'}</div>
+                <div>{'}'}</div>
+              </div>
             </div>
             
-            {/* Illusion Layer */}
+            {/* Mirror Divider Line */}
             <motion.div 
-              className="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/10 rounded-tr-2xl"
-              animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.3, 0.1] }}
-              transition={{ duration: 5, repeat: Infinity }}
+              className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent"
+              animate={{ opacity: [0.2, 0.5, 0.2] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+
+            {/* Hypnotic Pulse */}
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-r from-leo-purple/5 to-leo-indigo/5"
+              animate={{ opacity: [0, 0.2, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
             />
 
             <motion.div 
-              className="absolute bottom-6 right-6 flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10"
+              className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
               animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
-              <span className="text-[8px] font-bold uppercase tracking-widest">Compiler Active</span>
+              <span className="text-[6px] sm:text-[8px] font-bold uppercase tracking-widest">Neural Synthesis Active</span>
             </motion.div>
           </div>
         </motion.div>
@@ -226,10 +269,10 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute border border-white/10 rounded-2xl"
+                className="absolute border border-white/10 rounded-2xl sm:rounded-[2rem]"
                 style={{ 
-                  width: 100 + i * 50, 
-                  height: 100 + i * 50,
+                  width: `calc(100px + ${i * 15}%)`, 
+                  height: `calc(100px + ${i * 15}%)`,
                   borderColor: `${color}${Math.floor((1 - i/5) * 40).toString(16).padStart(2, '0')}`
                 }}
                 animate={{ 
@@ -274,7 +317,7 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
           className="absolute inset-0 flex items-center justify-center"
           style={tiltStyle}
         >
-          <div className="relative w-64 h-64">
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64">
             <motion.div 
               className="absolute inset-0 border-2 border-dashed rounded-full opacity-20"
               style={{ borderColor: color }}
@@ -314,8 +357,8 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
           className="absolute inset-0 flex items-center justify-center"
           style={tiltStyle}
         >
-          <div className="relative w-64 h-64 flex items-center justify-center">
-            <ShieldAlert size={80} style={{ color }} className="opacity-40" />
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center">
+            <ShieldAlert size={80} style={{ color }} className="opacity-40 sm:w-[80px] sm:h-[80px] w-[60px] h-[60px]" />
             <motion.div 
               className="absolute inset-0 border-4 rounded-full opacity-10"
               style={{ borderColor: color }}
@@ -343,8 +386,8 @@ const ModuleVisualizer = ({ product }: { product: any }) => {
           className="absolute inset-0 flex items-center justify-center"
           style={tiltStyle}
         >
-          <div className="relative w-72 h-72">
-            <Globe size={120} style={{ color }} className="absolute inset-0 m-auto opacity-20" />
+          <div className="relative w-56 h-56 sm:w-72 sm:h-72">
+            <Globe size={120} style={{ color }} className="absolute inset-0 m-auto opacity-20 sm:w-[120px] sm:h-[120px] w-[80px] h-[80px]" />
             <motion.div 
               className="absolute inset-0 border border-white/10 rounded-full"
               animate={{ rotate: 360 }}
@@ -408,6 +451,23 @@ const NeuralMirroringVisualizer = ({ color }: { color: string }) => {
   const springX = useSpring(mouseX, { stiffness: 40, damping: 25 });
   const springY = useSpring(mouseY, { stiffness: 40, damping: 25 });
 
+  // Create transforms at the top level to avoid hook rule violations
+  const x1 = useTransform(springX, (x) => (x - (typeof window !== 'undefined' ? window.innerWidth : 0) / 2) * 0.01);
+  const y1 = useTransform(springY, (y) => (y - (typeof window !== 'undefined' ? window.innerHeight : 0) / 2) * 0.01);
+  const x2 = useTransform(springX, (x) => (x - (typeof window !== 'undefined' ? window.innerWidth : 0) / 2) * 0.02);
+  const y2 = useTransform(springY, (y) => (y - (typeof window !== 'undefined' ? window.innerHeight : 0) / 2) * 0.02);
+  const x3 = useTransform(springX, (x) => (x - (typeof window !== 'undefined' ? window.innerWidth : 0) / 2) * 0.03);
+  const y3 = useTransform(springY, (y) => (y - (typeof window !== 'undefined' ? window.innerHeight : 0) / 2) * 0.03);
+  const x4 = useTransform(springX, (x) => (x - (typeof window !== 'undefined' ? window.innerWidth : 0) / 2) * 0.04);
+  const y4 = useTransform(springY, (y) => (y - (typeof window !== 'undefined' ? window.innerHeight : 0) / 2) * 0.04);
+
+  const transforms = [
+    { x: x1, y: y1 },
+    { x: x2, y: y2 },
+    { x: x3, y: y3 },
+    { x: x4, y: y4 }
+  ];
+
   useEffect(() => {
     let frameId: number;
     const handleMove = (e: MouseEvent) => {
@@ -436,7 +496,7 @@ const NeuralMirroringVisualizer = ({ color }: { color: string }) => {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-80 h-80">
           {/* Pulsating Circles */}
-          {[...Array(4)].map((_, i) => (
+          {transforms.map((transform, i) => (
             <motion.div
               key={i}
               className="absolute inset-0 border border-white/5 rounded-full will-change-transform"
@@ -444,8 +504,8 @@ const NeuralMirroringVisualizer = ({ color }: { color: string }) => {
                 scale: 1 + i * 0.4,
                 borderColor: color,
                 opacity: 0.1 - i * 0.02,
-                x: useTransform(springX, (x) => (x - (typeof window !== 'undefined' ? window.innerWidth : 0) / 2) * (0.01 * (i + 1))),
-                y: useTransform(springY, (y) => (y - (typeof window !== 'undefined' ? window.innerHeight : 0) / 2) * (0.01 * (i + 1))),
+                x: transform.x,
+                y: transform.y,
               }}
               animate={{
                 scale: [1 + i * 0.4, 1.15 + i * 0.4, 1 + i * 0.4],
@@ -727,20 +787,20 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 1, type: "spring" }}
-            className="relative h-96 md:aspect-square rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-3xl overflow-hidden group shadow-2xl"
+            className="relative h-[300px] sm:h-[400px] md:h-auto md:aspect-square rounded-[2rem] md:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-3xl overflow-hidden group shadow-2xl"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50" />
             <ModuleVisualizer product={product} />
             
             {/* Status Indicators */}
-            <div className="absolute top-8 left-8 flex flex-col gap-2">
-              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">
+            <div className="absolute top-4 left-4 sm:top-8 sm:left-8 flex flex-col gap-2">
+              <div className="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[8px] font-mono text-white/60 uppercase tracking-widest">Neural Sync: Optimal</span>
+                <span className="text-[6px] sm:text-[8px] font-mono text-white/60 uppercase tracking-widest">Neural Sync: Optimal</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">
+              <div className="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">
                 <div className="w-1.5 h-1.5 rounded-full bg-leo-purple animate-pulse" />
-                <span className="text-[8px] font-mono text-white/60 uppercase tracking-widest">Edge Processing: Active</span>
+                <span className="text-[6px] sm:text-[8px] font-mono text-white/60 uppercase tracking-widest">Edge Processing: Active</span>
               </div>
             </div>
           </motion.div>
@@ -752,25 +812,38 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 p-8 md:p-12 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl relative overflow-hidden group"
+            className="lg:col-span-2 p-6 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl relative overflow-hidden group"
           >
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+            <div className="absolute top-0 right-0 p-6 sm:p-8 opacity-10 group-hover:opacity-20 transition-opacity">
               <Info size={120} style={{ color: product.color }} />
             </div>
-            <h3 className="text-2xl md:text-3xl font-display font-black text-white mb-8 flex items-center gap-4">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-black text-white mb-8 flex items-center gap-4">
               <span className="w-8 h-1 bg-white/20 rounded-full" />
               TECHNICAL DEEP DIVE
             </h3>
             <p className="text-lg md:text-xl text-white/40 leading-relaxed font-light italic mb-12">
               {product.details.deepDive}
             </p>
+
+            {/* Hypnotic Mirror Pattern */}
+            <div className="absolute inset-0 pointer-events-none opacity-[0.05] overflow-hidden">
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%]"
+                style={{
+                  backgroundImage: `repeating-conic-gradient(from 0deg, white 0deg 10deg, transparent 10deg 20deg)`,
+                  maskImage: 'radial-gradient(circle, black, transparent 70%)'
+                }}
+              />
+            </div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 md:p-8 relative overflow-hidden group"
+              className="bg-white/[0.03] border border-white/10 rounded-2xl p-5 sm:p-6 md:p-8 relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <h4 className="text-sm font-display font-bold text-white mb-6 flex items-center gap-3 uppercase tracking-widest">
@@ -809,7 +882,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="p-8 md:p-12 rounded-[2.5rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 backdrop-blur-xl"
+            className="p-6 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 backdrop-blur-xl"
           >
             <h3 className="text-xl font-display font-black text-white mb-10 tracking-widest uppercase">SYSTEM SPECS</h3>
             <div className="space-y-8">
@@ -840,7 +913,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-500 group relative overflow-hidden"
+                className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/5 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-500 group relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all border border-white/10" style={{ color: product.color }}>

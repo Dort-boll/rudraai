@@ -23,6 +23,14 @@ export default function Background() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#000000]">
+      {/* SVG Filters for Advanced Aesthetics */}
+      <svg className="hidden">
+        <filter id="glass-distortion">
+          <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" />
+        </filter>
+      </svg>
+
       {/* Advanced Optical Illusion: Scintillating Grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.05]">
         <div 
@@ -41,8 +49,8 @@ export default function Background() {
 
       {/* Liquid Glass Blobs with Parallax */}
       <motion.div 
-        style={{ x: parallaxX, y: parallaxY }}
-        className="absolute inset-0 filter blur-[80px] opacity-20 will-change-transform"
+        style={{ x: parallaxX, y: parallaxY, filter: 'blur(80px) url(#glass-distortion)' }}
+        className="absolute inset-0 opacity-20 will-change-transform"
       >
         <motion.div
           animate={{
@@ -51,7 +59,7 @@ export default function Background() {
             scale: [1, 1.2, 0.8, 1],
           }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 left-1/4 w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-leo-purple/30 to-transparent translate-z-0"
+          className="absolute top-1/4 left-1/4 w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-leo-purple/30 to-transparent translate-z-0 will-change-transform"
         />
         <motion.div
           animate={{
@@ -60,7 +68,7 @@ export default function Background() {
             scale: [1.2, 0.8, 1.2, 1],
           }}
           transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 right-1/4 w-[55vw] h-[55vw] rounded-full bg-gradient-to-tr from-leo-indigo/20 to-transparent translate-z-0"
+          className="absolute bottom-1/4 right-1/4 w-[55vw] h-[55vw] rounded-full bg-gradient-to-tr from-leo-indigo/20 to-transparent translate-z-0 will-change-transform"
         />
       </motion.div>
 

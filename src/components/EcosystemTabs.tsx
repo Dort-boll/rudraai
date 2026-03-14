@@ -51,26 +51,45 @@ const Typewriter = ({ text, speed = 15 }: { text: string; speed?: number }) => {
 };
 
 const ProductVisualizer = ({ product }: { product: Product }) => {
+  const particles = React.useMemo(() => [...Array(20)].map(() => ({
+    x: [Math.random() * 300 - 150, Math.random() * 300 - 150, Math.random() * 300 - 150],
+    y: [Math.random() * 150 - 75, Math.random() * 150 - 75, Math.random() * 150 - 75],
+    duration: Math.random() * 8 + 7
+  })), [product.name]);
+
+  const ideDots = React.useMemo(() => [...Array(64)].map(() => ({
+    opacity: [0.05, Math.random() * 0.5 + 0.2, 0.05],
+    duration: Math.random() * 2 + 1,
+    delay: Math.random() * 2
+  })), [product.name]);
+
+  const threatDots = React.useMemo(() => [...Array(12)].map(() => ({
+    left: `${Math.random() * 90 + 5}%`,
+    top: `${Math.random() * 90 + 5}%`,
+    duration: Math.random() * 2 + 1,
+    delay: Math.random() * 2
+  })), [product.name]);
+
   switch (product.name) {
     case 'VayuMind AI':
       return (
         <div className="absolute inset-0 flex items-center justify-center">
-          {[...Array(20)].map((_, i) => (
+          {particles.map((p, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 rounded-full shadow-[0_0_15px_currentColor]"
+              className="absolute w-2 h-2 rounded-full shadow-[0_0_15px_currentColor] will-change-transform"
               style={{ backgroundColor: product.color, color: product.color }}
               animate={{
-                x: [Math.random() * 300 - 150, Math.random() * 300 - 150, Math.random() * 300 - 150],
-                y: [Math.random() * 150 - 75, Math.random() * 150 - 75, Math.random() * 150 - 75],
+                x: p.x,
+                y: p.y,
                 opacity: [0.2, 0.8, 0.2],
                 scale: [1, 1.5, 1]
               }}
-              transition={{ duration: Math.random() * 8 + 7, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: p.duration, repeat: Infinity, ease: "linear" }}
             />
           ))}
           <motion.div 
-            className="w-32 h-32 rounded-full blur-[40px] opacity-50"
+            className="w-32 h-32 rounded-full blur-[40px] opacity-50 will-change-transform"
             style={{ backgroundColor: product.color }}
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 4, repeat: Infinity }}
@@ -83,7 +102,7 @@ const ProductVisualizer = ({ product }: { product: Product }) => {
           {[1, 2, 3].map((i) => (
             <motion.div
               key={i}
-              className="absolute w-64 h-64 rounded-full border border-white/10"
+              className="absolute w-64 h-64 rounded-full border border-white/10 will-change-transform"
               style={{ borderColor: `${product.color}40` }}
               animate={{ rotateX: [0, 360], rotateY: [0, 360], rotateZ: [0, 360] }}
               transition={{ duration: 10 * i, repeat: Infinity, ease: "linear" }}
@@ -100,7 +119,7 @@ const ProductVisualizer = ({ product }: { product: Product }) => {
           {[...Array(15)].map((_, i) => (
             <motion.div
               key={i}
-              className="w-2 rounded-full opacity-80 shadow-[0_0_10px_currentColor]"
+              className="w-2 rounded-full opacity-80 shadow-[0_0_10px_currentColor] will-change-transform"
               style={{ backgroundColor: product.color, color: product.color }}
               animate={{ height: [10, 100, 10] }}
               transition={{ duration: 2, delay: i * 0.15, repeat: Infinity, ease: "easeInOut" }}
@@ -129,13 +148,13 @@ const ProductVisualizer = ({ product }: { product: Product }) => {
       return (
         <div className="absolute inset-0 flex items-center justify-center p-8">
           <div className="w-full h-full grid grid-cols-8 gap-2 opacity-60">
-            {[...Array(64)].map((_, i) => (
+            {ideDots.map((dot, i) => (
               <motion.div
                 key={i}
-                className="rounded-sm"
+                className="rounded-sm will-change-transform"
                 style={{ backgroundColor: product.color }}
-                animate={{ opacity: [0.05, Math.random() * 0.5 + 0.2, 0.05] }}
-                transition={{ duration: Math.random() * 2 + 1, repeat: Infinity, delay: Math.random() * 2 }}
+                animate={{ opacity: dot.opacity }}
+                transition={{ duration: dot.duration, repeat: Infinity, delay: dot.delay }}
               />
             ))}
           </div>
@@ -145,7 +164,7 @@ const ProductVisualizer = ({ product }: { product: Product }) => {
       return (
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
-            className="w-48 h-48 mix-blend-screen blur-[20px]"
+            className="w-48 h-48 mix-blend-screen blur-[20px] will-change-transform"
             style={{ backgroundColor: product.color }}
             animate={{
               borderRadius: ["20%", "50%", "30%", "50%", "20%"],
@@ -155,7 +174,7 @@ const ProductVisualizer = ({ product }: { product: Product }) => {
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute w-40 h-40 mix-blend-screen blur-[15px]"
+            className="absolute w-40 h-40 mix-blend-screen blur-[15px] will-change-transform"
             style={{ backgroundColor: "#fbbf24" }}
             animate={{
               borderRadius: ["50%", "20%", "50%", "30%", "50%"],
@@ -172,7 +191,7 @@ const ProductVisualizer = ({ product }: { product: Product }) => {
           {[1, 2, 3].map((i) => (
             <motion.div
               key={i}
-              className="absolute rounded-full border-2"
+              className="absolute rounded-full border-2 will-change-transform"
               style={{ borderColor: product.color }}
               animate={{
                 width: [0, 400],
@@ -200,7 +219,7 @@ const ProductVisualizer = ({ product }: { product: Product }) => {
               />
             </svg>
             <motion.div
-              className="absolute w-full h-1 blur-[2px]"
+              className="absolute w-full h-1 blur-[2px] will-change-transform"
               style={{ backgroundColor: product.color }}
               animate={{ top: ["10%", "90%", "10%"] }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
@@ -213,22 +232,22 @@ const ProductVisualizer = ({ product }: { product: Product }) => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-64 h-32 border border-white/10 rounded-full overflow-hidden opacity-60">
             <motion.div
-              className="absolute inset-0"
+              className="absolute inset-0 will-change-transform"
               style={{ backgroundImage: `radial-gradient(circle at center, ${product.color}20 0%, transparent 70%)` }}
               animate={{ opacity: [0.3, 0.7, 0.3] }}
               transition={{ duration: 3, repeat: Infinity }}
             />
-            {[...Array(12)].map((_, i) => (
+            {threatDots.map((dot, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1.5 h-1.5 rounded-full shadow-[0_0_10px_currentColor]"
+                className="absolute w-1.5 h-1.5 rounded-full shadow-[0_0_10px_currentColor] will-change-transform"
                 style={{ 
                   backgroundColor: product.color, color: product.color,
-                  left: `${Math.random() * 90 + 5}%`,
-                  top: `${Math.random() * 90 + 5}%`
+                  left: dot.left,
+                  top: dot.top
                 }}
                 animate={{ scale: [1, 2, 1], opacity: [0.2, 1, 0.2] }}
-                transition={{ duration: Math.random() * 2 + 1, repeat: Infinity, delay: Math.random() * 2 }}
+                transition={{ duration: dot.duration, repeat: Infinity, delay: dot.delay }}
               />
             ))}
           </div>
@@ -240,7 +259,7 @@ const ProductVisualizer = ({ product }: { product: Product }) => {
           <motion.div
             animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.3, 0.1] }}
             transition={{ duration: 12, repeat: Infinity }}
-            className="w-[400px] h-[400px] rounded-full blur-[120px]"
+            className="w-[400px] h-[400px] rounded-full blur-[120px] will-change-transform"
             style={{ backgroundColor: product.color }}
           />
         </div>

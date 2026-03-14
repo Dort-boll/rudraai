@@ -15,13 +15,22 @@ const CreativeStudioDemo = ({ color }: { color: string }) => {
   const [outputType, setOutputType] = useState<'image' | 'video' | 'text'>('image');
   const [showResult, setShowResult] = useState(false);
 
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
   const handleGenerate = () => {
     if (!prompt.trim()) return;
     setIsGenerating(true);
     setShowResult(false);
     
-    // Simulate generation process
-    setTimeout(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    
+    timeoutRef.current = setTimeout(() => {
       setIsGenerating(false);
       setShowResult(true);
     }, 2000);
@@ -170,6 +179,18 @@ const CreativeStudioDemo = ({ color }: { color: string }) => {
 };
 
 const ProductVisualizer = ({ product }: { product: any }) => {
+  const lines = React.useMemo(() => [...Array(15)].map(() => ({
+    x2: [Math.random() * 800, Math.random() * 800],
+    y2: [Math.random() * 800, Math.random() * 800],
+    duration: 10 + Math.random() * 5
+  })), [product.name]);
+
+  const particles = React.useMemo(() => [...Array(30)].map(() => ({
+    x: [Math.random() * 600 - 300, Math.random() * 600 - 300, Math.random() * 600 - 300],
+    y: [Math.random() * 400 - 200, Math.random() * 400 - 200, Math.random() * 400 - 200],
+    duration: Math.random() * 10 + 10
+  })), [product.name]);
+
   switch (product.name) {
     case 'Vayu Creative Studio':
       return <CreativeStudioDemo color={product.color} />;
@@ -177,40 +198,40 @@ const ProductVisualizer = ({ product }: { product: any }) => {
       return (
         <div className="absolute inset-0 flex items-center justify-center">
           <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 800 800">
-            {[...Array(15)].map((_, i) => (
+            {lines.map((line, i) => (
               <motion.line
                 key={i}
                 x1={400}
                 y1={400}
-                x2={Math.random() * 800}
-                y2={Math.random() * 800}
+                x2={line.x2[0]}
+                y2={line.y2[0]}
                 stroke={product.color}
                 strokeWidth="1"
                 animate={{
-                  x2: [Math.random() * 800, Math.random() * 800],
-                  y2: [Math.random() * 800, Math.random() * 800],
+                  x2: line.x2,
+                  y2: line.y2,
                   opacity: [0.2, 0.5, 0.2]
                 }}
-                transition={{ duration: 10 + Math.random() * 5, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: line.duration, repeat: Infinity, ease: "linear" }}
               />
             ))}
           </svg>
-          {[...Array(30)].map((_, i) => (
+          {particles.map((p, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 rounded-full shadow-[0_0_20px_currentColor]"
+              className="absolute w-2 h-2 rounded-full shadow-[0_0_20px_currentColor] will-change-transform"
               style={{ backgroundColor: product.color, color: product.color }}
               animate={{
-                x: [Math.random() * 600 - 300, Math.random() * 600 - 300, Math.random() * 600 - 300],
-                y: [Math.random() * 400 - 200, Math.random() * 400 - 200, Math.random() * 400 - 200],
+                x: p.x,
+                y: p.y,
                 opacity: [0.1, 0.8, 0.1],
                 scale: [1, 1.5, 1]
               }}
-              transition={{ duration: Math.random() * 10 + 10, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: p.duration, repeat: Infinity, ease: "linear" }}
             />
           ))}
           <motion.div 
-            className="w-48 h-48 rounded-full blur-[60px] opacity-30"
+            className="w-48 h-48 rounded-full blur-[60px] opacity-30 will-change-transform"
             style={{ backgroundColor: product.color }}
             animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 8, repeat: Infinity }}
@@ -222,7 +243,7 @@ const ProductVisualizer = ({ product }: { product: any }) => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-full h-full flex items-center justify-center">
             <motion.div 
-              className="absolute w-full h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent z-10"
+              className="absolute w-full h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent z-10 will-change-transform"
               animate={{ top: ["0%", "100%", "0%"] }}
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               style={{ boxShadow: `0 0 20px ${product.color}` }}
@@ -230,7 +251,7 @@ const ProductVisualizer = ({ product }: { product: any }) => {
             {[1, 2, 3, 4].map((i) => (
               <motion.div
                 key={i}
-                className="absolute w-[70%] max-w-[350px] aspect-square rounded-full border border-white/10"
+                className="absolute w-[70%] max-w-[350px] aspect-square rounded-full border border-white/10 will-change-transform"
                 style={{ borderColor: `${product.color}40` }}
                 animate={{ rotateX: [0, 360], rotateY: [0, 360] }}
                 transition={{ duration: 10 * i, repeat: Infinity, ease: "linear" }}

@@ -30,6 +30,10 @@ import FullScreenMenu from './components/FullScreenMenu';
 import ProductSection from './components/ProductSection';
 import ProductDetail from './components/ProductDetail';
 import HypnoticPattern from './components/HypnoticPattern';
+import InteractiveLogo from './components/InteractiveLogo';
+import EdgeIntelligenceDemo from './components/EdgeIntelligenceDemo';
+import MirrorSection from './components/MirrorSection';
+import HypnoticPatternOverlay from './components/HypnoticPatternOverlay';
 
 // Scramble Text Component
 const ScrambleText = React.memo(({ text }: { text: string }) => {
@@ -38,7 +42,7 @@ const ScrambleText = React.memo(({ text }: { text: string }) => {
   
   useEffect(() => {
     let iteration = 0;
-    let interval: any = null;
+    let interval: NodeJS.Timeout;
     
     interval = setInterval(() => {
       setDisplayText(text.split('').map((letter, index) => {
@@ -88,7 +92,7 @@ const products = [
         "Deep-work optimization"
       ],
       deepDive: "The core engine of VayuMind utilizes a proprietary 'Neural Mirroring' algorithm that synchronizes with the user's alpha waves. By creating a feedback loop of visual and auditory stimuli, it induces a state of 'Hyper-Flow' where productivity increases by up to 300%. The system is entirely self-contained, ensuring that your most private thoughts and cognitive patterns never leave your local hardware.",
-      howItWorks: "VayuMind captures real-time EEG data via wearable sensors, processes it through an on-device neural network to identify cognitive bottlenecks using Fast Fourier Transform (FFT), and generates personalized auditory and visual stimuli to synchronize alpha-wave oscillations for optimized focus."
+      howItWorks: "VayuMind utilizes a 'Neural Mirroring' protocol that synchronizes on-device neural processing with biological alpha-wave oscillations. By applying recursive Fast Fourier Transform (FFT) analysis to real-time EEG telemetry, it identifies cognitive resonance gaps and generates targeted auditory-visual stimuli to induce a state of sustained hyper-flow."
     }
   },
   {
@@ -120,7 +124,7 @@ const products = [
         "Climate change modeling"
       ],
       deepDive: "Vayu Research AI operates on a 'Hyper-Graph' architecture, connecting disparate scientific fields that human researchers might never cross-reference. It recently predicted a new class of high-temperature superconductors by analyzing 40-year-old metallurgical data alongside modern quantum physics simulations. It is not just a tool; it is a peer-level researcher that works 24/7.",
-      howItWorks: "It utilizes a massive Hyper-Graph database to map semantic relationships between millions of scientific papers. It then employs autonomous agents to test hypotheses in virtual simulations, iteratively refining its findings based on simulated outcomes using graph-based relational learning."
+      howItWorks: "Vayu Research AI employs a 'Hyper-Graph Semantic Synthesis' engine that maps multi-dimensional relationships across 150M+ scientific nodes. It utilizes autonomous reasoning agents to perform cross-domain literature triangulation, predicting novel hypotheses through high-fidelity quantum-mechanical simulations and graph-based relational learning."
     }
   },
   {
@@ -152,7 +156,7 @@ const products = [
         "Longevity science"
       ],
       deepDive: "By simulating the entire human proteome in a virtual environment, BioMind AI can test billions of drug interactions in seconds. Its 'Bio-Digital Twin' technology allows researchers to model how a specific genetic therapy will affect a patient's unique biological makeup before a single dose is administered. This is the end of trial-and-error medicine.",
-      howItWorks: "BioMind AI uses advanced transformer-based deep learning models to predict protein folding structures. It then simulates interactions between these proteins and potential drug molecules in a virtual biological environment using molecular dynamics simulations to identify candidates with the highest therapeutic potential."
+      howItWorks: "BioMind AI leverages transformer-based 'Proteomic Folding' models to simulate the entire human biological landscape. It utilizes molecular dynamics simulations to predict high-affinity drug-protein interactions, enabling the discovery of personalized therapeutic strategies through virtual bio-digital twin modeling."
     }
   },
   {
@@ -184,7 +188,7 @@ const products = [
         "Health trend prediction"
       ],
       deepDive: "GenAI Doctor utilizes a 'Multi-Modal Diagnostic' engine that cross-references visual data (scans/photos), textual data (reports), and sensor data (wearables). It can detect early-stage cardiovascular issues up to 18 months before physical symptoms appear. It acts as a 24/7 medical guardian, providing peace of mind through constant, non-invasive monitoring.",
-      howItWorks: "It ingests multi-modal medical data (images, text, sensor streams) and processes it through a specialized medical knowledge graph. It then applies a diagnostic fusion engine to identify anomalies and cross-references them with global medical databases to suggest potential diagnoses."
+      howItWorks: "GenAI Doctor utilizes a 'Multi-Modal Diagnostic Fusion' engine that cross-references clinical-grade telemetry with a global medical knowledge graph. It applies anomaly detection algorithms to radiology and lab data, synthesizing preventative health models that identify cardiovascular and neurological risks 18 months before clinical manifestation."
     }
   },
   {
@@ -216,7 +220,7 @@ const products = [
         "Cloud infrastructure scaling"
       ],
       deepDive: "Vayu IDE leverages 'Semantic Logic Synthesis' to understand business requirements in natural language and translate them into optimized, scalable codebases. It automatically manages database migrations, API documentation, and CI/CD pipelines. It's like having a team of 100 senior engineers working in perfect unison, instantly.",
-      howItWorks: "Vayu IDE utilizes a 'Neural Architecture Synthesis' engine to decompose high-level intent into modular functional blocks. It employs a multi-agent system where specialized agents handle code generation, architectural validation, and automated security auditing, utilizing a recursive feedback loop to ensure self-healing, scalable, and production-ready software systems."
+      howItWorks: "Vayu IDE operates through a 'Recursive Semantic Synthesis' protocol, where high-level conceptual intent is mirrored across a multi-dimensional neural lattice. This hypnotic decomposition process utilizes autonomous sub-agents to synthesize self-correcting codebases, ensuring that every line of logic is mathematically optimized and architecturally mirrored for perfect system equilibrium."
     }
   },
   {
@@ -248,7 +252,7 @@ const products = [
         "Architectural visualization"
       ],
       deepDive: "The 'Artistic Intuition' engine in Creative Studio doesn't just copy styles; it understands composition, lighting, and emotional resonance. It can generate a 60-second cinematic sequence from a single paragraph of text, complete with spatial audio and physics-based lighting. It is the ultimate tool for storytellers who want to see their dreams realized in high definition.",
-      howItWorks: "Utilizes a latent diffusion model coupled with a proprietary 'Artistic Intuition' engine that maps semantic concepts to high-dimensional visual latent spaces, enabling real-time generation of cinematic sequences, 3D environments, and artistic style transfer with physics-based lighting."
+      howItWorks: "Creative Studio utilizes a 'Latent Artistic Intuition' engine that maps high-level semantic intent to high-dimensional visual latent spaces. It employs physics-based lighting models and spatial audio synthesis to generate cinematic 16K sequences, ensuring every frame is compositionally and emotionally resonant."
     }
   },
   {
@@ -280,7 +284,7 @@ const products = [
         "Private browsing"
       ],
       deepDive: "Spark AI uses 'Contextual Intent Mapping' to understand exactly what you're looking for, even with vague queries. It bypasses the SEO-optimized 'junk' of the modern web to find the most authoritative and relevant information. Your search history is never stored, and your identity is masked through a decentralized relay network.",
-      howItWorks: "Employs a decentralized, agentic search architecture that crawls and indexes the web in real-time, utilizing a multi-layered transformer model to synthesize disparate data points into coherent, fact-checked answers while maintaining user privacy through on-device query obfuscation."
+      howItWorks: "Spark AI employs a 'Contextual Intent Mapping' protocol that bypasses SEO-optimized noise to index the web's authoritative core. It utilizes a decentralized relay network to mask user identity while synthesizing real-time, fact-checked answers through a multi-layered transformer architecture."
     }
   },
   {
@@ -312,7 +316,7 @@ const products = [
         "Data breach mitigation"
       ],
       deepDive: "Vayu IDS operates on a 'Zero-Trust Neural Mesh' that monitors every packet and behavioral pattern across your network. It can identify a zero-day exploit by detecting subtle deviations in system call patterns that no signature-based firewall would ever catch. It doesn't just alert you; it autonomously isolates infected nodes and heals the vulnerability in real-time.",
-      howItWorks: "Continuously monitors network traffic patterns using a behavioral analysis engine that leverages unsupervised learning to establish a baseline of 'normal' activity, instantly detecting and isolating anomalies that deviate from established patterns."
+      howItWorks: "Vayu IDS operates on a 'Zero-Trust Neural Mesh' that monitors network behavioral entropy. It utilizes unsupervised learning to establish a baseline of system-call patterns, autonomously isolating infected nodes and neutralizing zero-day threats through real-time architectural self-healing."
     }
   },
   {
@@ -344,7 +348,7 @@ const products = [
         "Public safety awareness"
       ],
       deepDive: "The Threat Map is a high-fidelity 'Digital Twin' of the global internet. It aggregates data from millions of sensors, honeypots, and Vayu IDS nodes to provide a comprehensive view of the world's security posture. It is used by governments and enterprises to anticipate large-scale cyber campaigns before they reach their targets.",
-      howItWorks: "Aggregates global telemetry data from distributed sensors into a real-time, 3D visualization engine, applying predictive threat modeling to forecast potential security breaches and visualize attack vectors across the global infrastructure."
+      howItWorks: "Threat Map aggregates exascale telemetry from a global sensor network into a high-fidelity 'Digital Twin' of the internet. It applies predictive threat modeling to visualize attack vectors in real-time, forecasting large-scale cyber campaigns through multi-source intelligence triangulation."
     }
   }
 
@@ -352,15 +356,84 @@ const products = [
 
 
 export default function App() {
+  const [isLoading, setIsLoading] = React.useState(true);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isEnginesOpen, setIsEnginesOpen] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState<any>(null);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
+  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 300]);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="relative min-h-screen cursor-none bg-black">
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            key="loader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
+            className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center overflow-hidden"
+          >
+            {/* Hypnotic Loading Pattern */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute inset-0" style={{ 
+                backgroundImage: 'repeating-conic-gradient(from 0deg, #7c3aed 0deg 10deg, transparent 10deg 20deg)',
+                animation: 'spin 20s linear infinite'
+              }} />
+              <div className="absolute inset-0 bg-radial-gradient from-transparent to-black" />
+            </div>
+
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="relative z-10 flex flex-col items-center"
+            >
+              <div className="w-24 h-24 mb-8 relative">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 border-t-2 border-leo-purple rounded-full"
+                />
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-2 border-b-2 border-white/20 rounded-full"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_15px_#fff]" />
+                </div>
+              </div>
+              <h2 className="text-2xl font-display font-black tracking-[0.5em] text-white uppercase mb-2">VAYU AGI</h2>
+              <div className="flex gap-1">
+                {[...Array(3)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    animate={{ opacity: [0.2, 1, 0.2] }}
+                    transition={{ duration: 1, delay: i * 0.2, repeat: Infinity }}
+                    className="w-1 h-1 bg-leo-purple rounded-full"
+                  />
+                ))}
+              </div>
+            </motion.div>
+
+            <style>{`
+              @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+              }
+            `}</style>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Scintillating Grid Illusion Overlay */}
       <div className="fixed inset-0 z-[1] pointer-events-none opacity-[0.03]">
         <div 
@@ -379,6 +452,7 @@ export default function App() {
       <NeuralCursor />
       <SystemStatus />
       <Background />
+      <HypnoticPatternOverlay />
       <FullScreenMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} products={products} />
       
       <AnimatePresence>
@@ -395,16 +469,9 @@ export default function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-white/[0.05] to-transparent opacity-0 group-hover/nav:opacity-100 transition-opacity duration-500 pointer-events-none" />
         <div 
           onClick={() => setSelectedProduct(null)}
-          className="flex items-center gap-3 md:gap-4 group cursor-pointer relative z-10"
+          className="relative z-10"
         >
-          <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-tr from-leo-purple to-leo-indigo flex items-center justify-center font-black text-xl md:text-2xl shadow-lg shadow-leo-purple/20 group-hover:shadow-[0_0_30px_rgba(124,58,237,0.6)] group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 relative overflow-hidden">
-            <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay" />
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"
-            />
-            <span className="relative z-10 group-hover:text-white transition-colors duration-300">R</span>
-          </div>
-          <span className="font-display font-black tracking-tighter text-2xl md:text-3xl group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-leo-purple group-hover:to-leo-indigo transition-all duration-500">RUDRA</span>
+          <InteractiveLogo />
         </div>
         <div className="hidden lg:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.3em] text-white/40 relative z-10">
           <div className="relative group/engines">
@@ -480,9 +547,10 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 px-4 sm:px-6 overflow-hidden">
+      <MirrorSection>
+        <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 px-4 sm:px-6 overflow-hidden">
         <motion.div 
-          style={{ opacity, scale, y: useTransform(scrollYProgress, [0, 1], [0, 300]) }}
+          style={{ opacity, scale, y: yParallax }}
           className="text-center z-10 max-w-6xl w-full"
         >
           <motion.div
@@ -557,9 +625,11 @@ export default function App() {
           <ChevronDown size={32} className="sm:w-10 sm:h-10" />
         </motion.div>
       </section>
+      </MirrorSection>
 
       {/* What is Vayu AGI */}
-      <section id="about" className="py-24 md:py-40 px-4 sm:px-6 relative">
+      <MirrorSection>
+        <section id="about" className="py-24 md:py-40 px-4 sm:px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
             <motion.div
@@ -639,6 +709,10 @@ export default function App() {
           </div>
         </div>
       </section>
+      </MirrorSection>
+
+      {/* Edge Intelligence Demo */}
+      <EdgeIntelligenceDemo />
 
       {/* Philosophy Section */}
       <section id="philosophy" className="py-24 md:py-40 px-4 sm:px-6 relative overflow-hidden">
